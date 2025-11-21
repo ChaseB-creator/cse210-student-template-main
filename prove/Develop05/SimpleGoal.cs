@@ -1,5 +1,3 @@
-using System;
-
 public class SimpleGoal : Goal
 {
     private bool _isComplete;
@@ -18,6 +16,7 @@ public class SimpleGoal : Goal
 
     public override int RecordEvent()
     {
+        if (_isComplete) return 0;
         _isComplete = true;
         return Points;
     }
@@ -34,6 +33,6 @@ public class SimpleGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"SimpleGoal|{Name}|{Description}|{Points}|{IsComplete()}";
+        return $"SimpleGoal|{Name}|{Description}|{Points}|{_isComplete}";
     }
 }

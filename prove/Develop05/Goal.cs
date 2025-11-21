@@ -1,5 +1,3 @@
-using System;
-
 public abstract class Goal
 {
     private string _name;
@@ -10,11 +8,24 @@ public abstract class Goal
     public string Description => _description;
     public int Points => _points;
 
-    public Goal(string name, string description, int points)
+    protected Goal(string name, string description, int points)
     {
         _name = name;
         _description = description;
         _points = points;
+    }
+
+    public void Rename(string newName)
+    {
+        if (!string.IsNullOrWhiteSpace(newName))
+        {
+            _name = newName.Trim();
+        }
+    }
+
+    public void EditDescription(string newDescription)
+    {
+        _description = newDescription ?? "";
     }
 
     public abstract int RecordEvent();
