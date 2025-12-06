@@ -1,9 +1,13 @@
 using System;
 
-class Program
+namespace ConsoleBattleGame
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello Sandbox World!");
+        static void Main(string[] args)
+        {
+            Game game = new Game();
+            game.StartGame();
+        }
     }
 }
