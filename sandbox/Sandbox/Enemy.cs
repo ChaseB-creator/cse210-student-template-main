@@ -1,21 +1,30 @@
+using System;
+
 namespace ConsoleBattleGame
 {
     public class Enemy
     {
-        public string Name { get; protected set; }
-        public int Health { get; protected set; }
-        public int BaseHealth { get; protected set; }
-        public int AttackDamage { get; protected set; }
+        protected string _name;
+        protected int _health;
+        protected int _damage;
 
-        public void Attack()
+        public string GetName() { return _name; }
+        public int GetHealth() { return _health; }
+
+        public void TakeDamage(int amount)
         {
-            // Stuff will be added here...
+            _health -= amount;
         }
 
         public bool IsAlive()
         {
-           // Stuff will be added here...
-            return true;
+            return _health > 0;
+        }
+
+        public void Attack(Character player)
+        {
+            Console.WriteLine($"{_name} attacks you for {_damage} damage!");
+            player.TakeDamage(_damage);
         }
     }
 }
